@@ -16,9 +16,19 @@ Battery choice for Pro Mini is easy as it is happy on a wide voltage range and d
 **ESP8266** and similar
 If you need WiFi the WEMOS and NodeMCU type boards are easy to use but include power sapping peripherals. For low power an ESP12F is better but in order to flash the code you need either a Burner Board or homemade device. I've made a programmer from an ESP01 USB programmer and breadboard, with the ESP12Fs mounted on breakout boards so the pins match breadboard spacing but really it's worth getting a burner board which will also take the ESP01.
 You can get the ESP12F to deepSleep at about 20uA but the big power drain is when you have to use the WiFi. Even without WiFi running there's still a fair current requirement. You can minimise this by sleeping a few seconds while a sensor warms up - my air pollution one needed 30s.
-It's tricky measuring an average withvery low power consumption and occasional high short spikes so I use a 5F supercapacitor and measure the voltage drop over time. i = voltage drop x Farads/time.  
-Battery choice is important for ESP*** because they require 3 to 3.6v and short high current when WiFi is on. AA Lithium supply close to 3v until near the end of life and I've found the ESP still operates to below 2.9v. I'm expecting a year's life from two of these powering ESP12F and DHT22 sensor for 5 minute readings along with weekly data downloads over WiFi.   
-Getting data into and out of the ESP12F is easily achieved using the WiFi and a mobile phone, which requires broadcasting an Access Point (AP). There are other WiFi modes you may need to work with on the same device, such as ESP-Now, internet connection, OTA and these can be tricky to get workign on the one device. 
+It's tricky measuring an average withvery low power consumption and occasional high short spikes so I use a 5F supercapacitor and measure the voltage drop over time. i = voltage drop x Farads/time. For example dropping 0.1v over 1 hour is i = 0.1v x 5F/(60*60) A = approx 30uA.    
+Battery choice is important for ESP*** because they require 3 to 3.6v and short high current when WiFi is on. 2 * AA Lithium supply close to 3v until near the end of life and I've found the ESP still operates to below 2.9v. I'm expecting a year's life from these powering ESP12F and DHT22 sensor for 5 minute readings along with weekly data downloads over WiFi.   
+Getting data into and out of the ESP12F is easily achieved using the WiFi and a mobile phone, which requires broadcasting an Access Point (AP). There are other WiFi modes you may need to work with on the same device, such as ESP-Now, internet connection, OTA and these can be tricky to get working on the one device. I've succeeded by powering up into different states depending on a flag in flash memory. 
+
+### Fast WiFi start up  
+
+### Booting into different WiFi modes   
+
+### ESP_Now -> ESP_Now --> internet
+
+### OTA + AP
+
+### 
 
 
 
