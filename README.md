@@ -1,4 +1,14 @@
 Aiming to help anyone trying to run ESP*** from battery (and mention of Pro Mini also).
-Not going to repeat what is well described elsewhere but it took me 2 years to find and get working these 'tricks' so hoping this speeds it up for others.
-This will grow week by week as my code examples are all customised and embedded in large code systems now so I have to extract and test.
+Not going to repeat in detail what is well described elsewhere but it took me 2 years to find and get working these 'tricks' so hoping this speeds it up for others.
+This will grow week by week as my code examples are all customised and embedded in large code systems now so I have to extract and test, but I should have kept notes so this will be my repository for remembering and reusing code sections.
 Will cover: ESP version, deepSleep, WiFi power use, OTA, AP, ESP_Now, variable persistence (RTC memory, LittleFS, CRC), state management. 
+I only consider cheap, easy to source and easy program using Arduino IDE ESP*** and Pro Mini development boards
+##Low power basics. 
+Pro Mini has a lower power requirement than ESP*** and the dev board needs a little modification for low power. The LED and regulator have to be removed and there are good descriptions elsewhere for doing this. 
+A huge advantage of the Pro Mini is its wide voltage supply requirement. I'm talking now about the 3.3v 8 MHz version. I am able to run one from a supercapacitor and small solar panel because it runs happily from 5v down to 1.8v,. I did have to switch off brown out detection though. To get as low as 1.8v it's supposed to be neccesary to reduce the clock speed but I haven't found this neccessary' perhaps because when the voltage gets that low I have it in deepSleep and only waking up to check the supercapacitor vlotage.
+The Pro Mini lacks WiFi so I use RF433 modules (allowable frequency is country dependant so you may have to use different) which have a decent range through walls. A 17cm straight wire is as good as or better than the helix or spring aerials you can buy. The RCSwitch works well and you can save energy by setting the lowest repeat message that is reliable enough. I transmit in about .3 secs at about 20mA so under 7mA seconds of energy. 
+The RF433 module continues to transmit below 2v by the way.
+The quiescent current of the RF433 modules is supposed to be a few uA but some of them have not broken out this option to the dev board so I power them from a GPIO pin: you'd have to use a pin anyway to put it into quiescent mode so it's not a loss. However some do use uA when not transmitting so it's not always necessary.
+Unfortunaely it's one way unless you include a receiver, but that would have to be on all the time and will drain the battery, unless you have it wake up periodically and transmit a request for any messages. However for saving sensor data when the odd missing value doesn't matter it's fine. For something urgent I have a high repetition number in RCSwitch.
+RCSwitch is also effective at recognising codes from remote socket controllers allowing to replicate and control sockets by code. This provides an easy way to use voice control via Alexa --> ESP*** --> RF433 module --> remote socket.
+
