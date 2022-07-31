@@ -1,8 +1,9 @@
-Aiming to help anyone trying to run ESP*** from battery (and mention of Pro Mini also).
-Not going to repeat in detail what is well described elsewhere but it took me 2 years to find and get working these 'tricks' so hoping this speeds it up for others.
-This will grow week by week as my code examples are all customised and embedded in large code systems now so I have to extract and test, but I should have kept notes so this will be my repository for remembering and reusing code sections.
-Will cover: ESP version, deepSleep, WiFi power use, OTA, AP, ESP_Now, variable persistence (RTC memory, LittleFS, CRC), state management. 
-I only consider cheap, easy to source and easy program using Arduino IDE ESP*** and Pro Mini development boards
+# Summary of Low Power techniques with ESP*** and Pro Mini
+Aiming to help anyone trying to run ESP*** from battery (and mention of Pro Mini also).  
+Not going to repeat in detail what is well described elsewhere but it took me 2 years to find and get working these 'tricks' so hoping this speeds it up for others.  
+This will grow week by week as my code examples are all customised and embedded in large code systems now so I have to extract and test, but I should have kept notes so this will be my repository for remembering and reusing code sections.  
+Will cover: ESP version, deepSleep, WiFi power use, OTA, AP, ESP_Now, variable persistence (RTC memory, LittleFS, CRC), state management.   
+I only consider cheap, easy to source and easy program using Arduino IDE ESP*** and Pro Mini development boards  
 ## Low power basics. 
 Pro Mini has a lower power requirement than ESP*** and the dev board needs a little modification for low power. The LED and regulator have to be removed and there are good descriptions elsewhere for doing this. 
 A huge advantage of the Pro Mini is its wide voltage supply requirement. I'm talking now about the 3.3v 8 MHz version. I am able to run one from a supercapacitor and small solar panel because it runs happily from 5v down to 1.8v,. I did have to switch off brown out detection though. To get as low as 1.8v it's supposed to be neccesary to reduce the clock speed but I haven't found this neccessary' perhaps because when the voltage gets that low I have it in deepSleep and only waking up to check the supercapacitor vlotage.
