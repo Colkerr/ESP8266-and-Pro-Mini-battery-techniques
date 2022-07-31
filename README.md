@@ -37,7 +37,7 @@ On failure to connect in 1000 attempts it calls launchSlowConnect() which includ
 
 
 ## Refences
-https://arduino-esp8266.readthedocs.io/en/latest/esp8266wifi/generic-class.html
+https://arduino-esp8266.readthedocs.io/en/latest/esp8266wifi/generic-class.html  
 https://github.com/tzapu/WiFiManager   
 
 
