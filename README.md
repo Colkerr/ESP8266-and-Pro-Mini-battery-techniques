@@ -21,6 +21,10 @@ Battery choice is important for ESP*** because they require 3 to 3.6v and short 
 Getting data into and out of the ESP12F is easily achieved using the WiFi and a mobile phone, which requires broadcasting an Access Point (AP). There are other WiFi modes you may need to work with on the same device, such as ESP-Now, internet connection, OTA and these can be tricky to get working on the one device. I've succeeded by powering up into different states depending on a flag in flash memory. 
 
 ### Fast WiFi start up  
+Code example ....?
+I have  WiFiTasks(); in startup() and it attempts to connect while (WiFi.status() != WL_CONNECTED) {....} for 1000 tries with delay(10); in between.
+I like to Serial.print the number of tries but just now it's taking around 30 and connecting in under 400ms though I've seen it much higher. I guess it depends on how busy the router is.
+On failure to connect in 1000 attempts it calls launchSlowConnect() which includes the WiFiManager commands. It will obviously get here the very first time it doesn't see a known SSID.
 
 ### Booting into different WiFi modes   
 
@@ -32,7 +36,9 @@ Getting data into and out of the ESP12F is easily achieved using the WiFi and a 
 
 
 
-
+## Refences
+https://arduino-esp8266.readthedocs.io/en/latest/esp8266wifi/generic-class.html
+https://github.com/tzapu/WiFiManager   
 
 
 
