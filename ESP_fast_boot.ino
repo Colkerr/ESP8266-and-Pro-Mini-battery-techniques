@@ -46,7 +46,7 @@ void launchSlowConnect() {
         ESP.restart();
     }
   }
-  WiFi.persistent(false);     // save the wifi credentials to flash
+  WiFi.persistent(false);     // already saved above so don't bother launchSlowConnect() needed.
   Serial.print("connected, given IP address: "); String IP_Address = WiFi.localIP().toString();
   Serial.println(IP_Address); 
   Serial.println("WiFi connected and credentials saved");
