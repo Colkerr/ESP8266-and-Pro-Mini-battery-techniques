@@ -11,7 +11,7 @@ void setup() {
 
 void loop() {
     Serial.println(millis()); Serial.println("    when connected");
-    ESP.deepSleep(10e6);   //to check getResetReason on wake up
+    ESP.deepSleep(10e6);   
 }
 
 void WiFiTasks() {
