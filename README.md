@@ -25,6 +25,7 @@ Code example ESP_fast_boot.ino
 Briefly, I have  WiFiTasks(); in startup() and it attempts to connect while (WiFi.status() != WL_CONNECTED) {....} for 1000 tries with delay(10); in between. 
 I like to Serial.print the number of tries but just now it's taking around 30 and connecting in under 400ms though I've seen it much higher. I guess it depends on how busy the router is. 
 On failure to connect in 1000 attempts it calls launchSlowConnect() which includes the WiFiManager commands. It will obviously get here the very first time it doesn't see a known SSID. 
+Be aware that if you use ESP.deepSleep(sleepTime, WAKE_RF_DISABLED ); for the wake times when you don't need WiFi, then it takes much longer to wake up with WiFi on so if you only use very short awake times in between it can be better to avoid WAKE_RF_DISABLED.
 
 ### Booting into different WiFi modes      
 Code example OTA_with_Battery.ino   
